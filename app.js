@@ -203,3 +203,37 @@ const stand = () =>{ // alternates between players
   }
 
 }
+
+const gameOver = ()=>{
+  let victor = -1
+  let pointscored = 0
+  for( let vic of competitors.length){
+    if(competitors[vic].Scored > pointscored && competitors[vic] < 22){
+      victor = vic;
+    }
+    pointscored = competitors[vic].Scored
+  }
+  document.getElementById('status').innerHTML = 'Victor: Player ' + competitors[victor].ID
+  document.getElementById('status').style.display ='inline-block'
+
+
+}
+
+const dealChk = () =>{
+  if(competitors[currentCompetitor].Scored > 21){
+    document.getElementById('status').innerHTML = 'Player: ' + competitors[currentCompetitor].ID + ' LOST';
+
+    document.getElementById('status').style.display = 'inline-block';
+    
+
+
+  }
+
+}
+
+    
+// const newDeck = () =>{
+    
+
+// }
+
