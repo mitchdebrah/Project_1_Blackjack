@@ -1,9 +1,25 @@
+
+.btn{
+  border:none;
+  padding: 10px 30px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+
 .jack {
-  width: 720px;
-  border: solid 1px #ddd;
+  width: 820px;
+  border: solid 1px rgb(245, 240, 240);
   margin: 0 auto;
-  background: #3ac7fe;
-  border: solid 10px;
+  background: #3c81e8;
+  border: solid 1px;
   text-align: center;
-  min-height: 430px;
+  min-height: 630px;
+}
+
+ h3
+{
+padding: 10px;
+background:black;
+color:white;
 }
