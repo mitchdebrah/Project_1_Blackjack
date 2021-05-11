@@ -225,15 +225,23 @@ const dealChk = () =>{
 
     document.getElementById('status').style.display = 'inline-block';
     
-
-
   }
 
 }
 
     
-// const newDeck = () =>{
+const newDeck = () =>{
+  document.getElementById('deckcount').innerHTML = boardDk.length
     
 
-// }
+}
+
+window.addEventListener('DOMContentLoaded', () =>{
+  boardDkCreation();
+  cardShuffle();
+  playersCreated();
+
+
+
+})
 
