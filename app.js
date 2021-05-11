@@ -236,4 +236,12 @@ const newDeck = () =>{
 
 }
 
+window.addEventListener('DOMContentLoaded', () =>{
+  boardDkCreation();
+  cardShuffle();
+  playersCreated();
+
+
+
+})
 
