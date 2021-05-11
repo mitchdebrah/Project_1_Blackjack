@@ -192,4 +192,14 @@ const hit = ()=>{  // removes card from deck to player and chesk for points over
   dealChk();
 }
 
+const stand = () =>{ // alternates between players
+  if (currentCompetitor != competitors.length -1){
+    document.getElementById('player_' + currentCompetitor).classList.remove('active')
+    currentCompetitor += 1;
+    document.getElementById('player_' + currentCompetitor).classList.add('active')
+  }
+  else {
+    gameOver();
+  }
 
+}
