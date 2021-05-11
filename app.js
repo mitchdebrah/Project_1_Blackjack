@@ -84,3 +84,18 @@ const userInterface = () =>{
     }
 
 }
+// got inspiration from a popular card shuffle code
+const cardShuffle = () =>{
+    for (let i = 0; i < 200; i++){
+            
+        let placement0 = Math.floor((Math.random() * boardDk.length));
+        let placement1 = Math.floor((Math.random() * boardDk.length));
+        let spot = boardDk[placement0];
+
+        boardDk[placement0] = boardDk[placement1];
+        boardDk[placement1] = spot;
+    }
+}
+
+
+
