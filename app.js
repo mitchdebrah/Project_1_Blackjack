@@ -129,5 +129,59 @@ const dealerhand = ()=>{ // distributes the cards to the players each player get
 }
 
 
+const displayCard = (card, player)=>{
+    let hd = document.getElementById('hand_' + player);
+    hd.appendChild(cardInterface(card));
 
+}
+
+const cardInterface = (card) =>{
+    let intface = document.createElement('div');
+    let symbol = '';
+    if (card.Suit == 'H')
+    symbol = '&hearts;'
+    else if (card.Suit == 'S')
+    symbol = '&spades;'
+    else if(card.Suit == 'D')
+    symbol = '&diamonds'
+    else 
+    symbol ='&clubs;'
+
+
+    intface .className = 'card';
+    intface .innerHTML = card.Rank + '<br/>' + symbol;
+    return intface;
+
+    
+
+
+    
+    
+    
+    
+    
+
+    
+}
+
+const getScores = (player) =>{ // returns the number of points at hand
+    let scores = 0;
+    for(let pts of competitors[player].Hand.length){
+      scores += competitors[player].Hand[pts].Value
+
+    }
+    competitors[player].scores = scores;
+    return scores;
+
+
+    
+}
+const newScores = () =>{
+  for(let n)
+}
+    
+const newDeck = () =>{
+    
+
+}
 
