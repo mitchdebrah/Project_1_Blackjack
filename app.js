@@ -183,11 +183,13 @@ const newScores = () =>{
   }
 }
 
+const hit = ()=>{  // removes card from deck to player and chesk for points over 21
+  let cardplayed = boardDk.pop();
+  competitors[currentCompetitor].Hand.push(cardplayed)
+  displayCard(card, currentCompetitor)
+  newScores();
+  newDeck();
+  dealChk();
+}
 
-
-    
-// const newDeck = () =>{
-    
-
-// }
 
