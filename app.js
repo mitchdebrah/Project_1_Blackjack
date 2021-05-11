@@ -112,5 +112,22 @@ const beginBJGame = ()=>{
 
 }
 
+const dealerhand = ()=>{ // distributes the cards to the players each player gets two cards.
+    for(let j = 0; j < 2; j++){
+        for(let comp of competitors){
+            let card = boardDk.pop();
+            competitors[comp].Hand.push(card);
+            displayCard(card, comp);
+            newScores();
+
+        }
+    }
+
+    newDeck();
+
+
+}
+
+
 
 
