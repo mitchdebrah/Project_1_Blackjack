@@ -20,7 +20,7 @@ currentCompetitor = 0;
 
 
 const boardDkCreation = () => {
-  boardDk = new Array();
+  boardDk = [];
 
   for (let boardDkcard of ranks) {
     // console.log(boardDkcard)
@@ -44,17 +44,14 @@ const boardDkCreation = () => {
     }
   }
 };
-boardDkCreation();
+// boardDkCreation();
 
-console.log(
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-);
 
 const playersCreated = (number) => {
   competitors = [];
   for (let num of number) {
     let playHand = [];
-    let player = { Name: "Player " + num, ID: num, Points: 0, Hand: playHand };
+    let player = { Name: "Player " + num, ID: num, scored: 0, Hand: playHand };
     cardplayers.push(player);
   }
 };
@@ -65,7 +62,7 @@ const userInterface = () =>{
     for(let ply of competitors){
 
         let divP = document.createElement('div');
-        document.querySelector('players').appendChild(divP); // change players to competitors
+        document.querySelector('players').appendChild(divP); 
         divP.className = 'player';
         divP.id = 'player_' + ply;
         divP.appendChild(divPI);
@@ -80,18 +77,14 @@ const userInterface = () =>{
         divH.id = 'hand_' + ply;
 
         let divPts = document.createElement('div');
-        divPts.className = 'points';
-        divPts.id = 'points_' + ply;
+        divPts.className = 'scored';
+        divPts.id = 'scored_' + ply;
 
         console.log(divP)
-
-
     }
 
-
-    
-
 }
+// got inspiration from a popular card shuffle code
 const cardShuffle = () =>{
     for (let i = 0; i < 200; i++){
             
@@ -104,4 +97,85 @@ const cardShuffle = () =>{
     }
 }
 
+const beginBJGame = ()=>{
+    document.querySelector('reset').value = 'Reset';
+    document.querySelector("status").style.display="none";
+    boardDkCreation();
+    playersCreated(2);
+    cardShuffle();
+    userInterface();
+    document.querySelector('player_' + currentCompetitor).classList.add('active');
+    dealerhand();
+
+    currentCompetitor = 0;
+
+
+}
+
+const dealerhand = ()=>{ // distributes the cards to the players each player gets two cards.
+    for(let j = 0; j < 2; j++){
+        for(let comp of competitors){
+            let card = boardDk.pop();
+            competitors[comp].Hand.push(card);
+            displayCard(card, comp);
+            newScores();
+
+        }
+    }
+
+    newDeck();
+
+
+}
+
+
+const displayCard = (card, player)=>{
+    let hd = document.getElementById('hand_' + player);
+    hd.appendChild(cardInterface(card));
+
+}
+
+const cardInterface = (card) =>{
+    let intface = document.createElement('div');
+    let symbol = '';
+    if (card.Suit == 'H')
+    symbol = '&hearts;'
+    else if (card.Suit == 'S')
+    symbol = '&spades;'
+    else if(card.Suit == 'D')
+    symbol = '&diamonds'
+    else 
+    symbol ='&clubs;'
+
+
+    intface .className = 'card';
+    intface .innerHTML = card.Value + '<br/>' + symbol;
+    return intface;
+
     
+
+
+    
+    
+    
+    
+    
+
+    
+}
+
+const newScores = (player) =>{ // returns the number of points at hand
+    let scores = 0;
+    for(let pts of competitors[player].Hand.length){
+
+    }
+
+
+    
+}
+    
+const newDeck = () =>{
+    
+
+}
+
