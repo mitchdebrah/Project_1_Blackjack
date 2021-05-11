@@ -51,7 +51,7 @@ const playersCreated = (number) => {
   competitors = [];
   for (let num of number) {
     let playHand = [];
-    let player = { Name: "Player " + num, ID: num, scored: 0, Hand: playHand };
+    let player = { Name: "Player " + num, ID: num, Scored: 0, Hand: playHand };
     cardplayers.push(player);
   }
 };
@@ -77,8 +77,8 @@ const userInterface = () =>{
         divH.id = 'hand_' + ply;
 
         let divPts = document.createElement('div');
-        divPts.className = 'scored';
-        divPts.id = 'scored_' + ply;
+        divPts.className = 'scorepts';
+        divPts.id = 'scorepts_' + ply;
 
         console.log(divP)
     }
@@ -170,18 +170,24 @@ const getScores = (player) =>{ // returns the number of points at hand
       scores += competitors[player].Hand[pts].Value
 
     }
-    competitors[player].scores = scores;
+    competitors[player].Scored = scores;
     return scores;
 
 
     
 }
 const newScores = () =>{
-  for(let n)
+  for(let newsc of competitors.length){
+    getScores();
+    document.getElementById('scorepts_' + newsc).innerHTML = competitors[newsc].Scored
+  }
 }
+
+
+
     
-const newDeck = () =>{
+// const newDeck = () =>{
     
 
-}
+// }
 
