@@ -97,5 +97,20 @@ const cardShuffle = () =>{
     }
 }
 
+const beginBJGame = ()=>{
+    document.querySelector('reset').value = 'Reset';
+    document.querySelector("status").style.display="none";
+    boardDkCreation();
+    playersCreated(2);
+    cardShuffle();
+    userInterface();
+    document.querySelector('player_' + currentCompetitor).classList.add('active');
+    dealerhand();
+
+    currentCompetitor = 0;
+
+
+}
+
 
 
