@@ -18,3 +18,9 @@ f.an ace and face card count as 21, a winning hand and its a winning hand
 g.Player1 will request another card if the value of the hand is under 17.
 
 h. There are no ties in the game design on purpose, some casinos play by such rules.
+
+// working on adding more features to make it more dynamic, like creating a draw function to call the game a tie when both player get the same number of pints.
+
+// add images to give the card a real look  of deck of cards.
+
+// make the the flip instead of popping out.
