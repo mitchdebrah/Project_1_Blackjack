@@ -100,3 +100,30 @@ h2 {
   background: #b2e3ee;
 }
 
+.player.current {
+  border: solid 5px rgb(216, 94, 94);
+}
+
+.scorepts {
+  text-align: center;
+  font-size: 20pt;
+  font-weight: bold;
+  margin: 10px;
+  color: rgb(216, 42, 42);
+}
+
+.boardDk {
+  float: left;
+  background: #b2e3ee;
+  color: rgb(216, 94, 94);
+  padding: 7px;
+  border-radius: 10px;
+  border: solid 2px;
+  position: relative;
+  top: -120px;
+  right: -250px;
+  margin: 0 auto;
+  width: 40px;
+  margin: 20px;
+}
+
