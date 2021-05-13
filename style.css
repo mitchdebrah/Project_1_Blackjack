@@ -46,7 +46,23 @@ h2 {
     1px 30px 60px rgba(16, 16, 16, 0.4);
 }
 
+.card {
+  width: 50px;
+  height: 80px;
+  padding: 10px;
+  border: solid 10px #5b0c71;
 
+  display: inline-flex;
+  border-radius: 10px;
+  font-size: 10pt;
+  text-align: center;
+  margin: 3px;
+  border: solid 3px;
+  color: rgb(5, 1, 11);
+  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(12, 12, 12, 0.639));
+  text-decoration: aquamarine;
+  background-color: aqua;
+}
  
 
 .stateOfGame {
