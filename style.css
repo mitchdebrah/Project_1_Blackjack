@@ -136,4 +136,30 @@ div {
 }
 
 
-/
+/* div#player_0 {
+  display:none;
+}
+
+
+div#player_0::after {
+  content: "Dealer";
+} */
+
+
+
+.green {
+  width: 820px;
+  border: solid 3px rgb(4, 69, 30);
+  margin: 0 auto;
+  background-color: #80c9b2;
+
+  text-align: center;
+  min-height: 630px;
+  position: relative;
+
+  background-image: linear-gradient(
+    to bottom,
+    rgba(240, 241, 242, 0.899),
+    rgba(1, 55, 0.88)
+  );
+}
