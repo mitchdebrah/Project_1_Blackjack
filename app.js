@@ -1,46 +1,40 @@
-
-
-
 let boardDk = [];
 let competitors = [];
 let currentCompetitor = 0;
 
 const boardDkCreation = () => {
   boardDk = [];
-
-
-  const cardSuits = ['S', 'H', 'D', 'C'];
-const ranks = [
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10',
-  'J',
-  'Q',
-  'K',
-  'A',
-];
+  const cardSuits = ["S", "H", "D", "C"];
+  const ranks = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+    "A",
+  ];
 
   for (let i = 0; i < ranks.length; i++) {
-    for (let x = 0; x < cardSuits.length; x++) {
+    for (let n = 0; n < cardSuits.length; n++) {
       let values = parseInt(ranks[i]);
       if (ranks[i] == "J" || ranks[i] == "Q" || ranks[i] == "K") values = 10;
       if (ranks[i] == "A") values = 11;
       let card = {
         Rank: ranks[i],
-        Suit: cardSuits[x],
+        Suit: cardSuits[n],
         Value: values,
       };
       boardDk.push(card);
     }
   }
 };
-
 
 const playersCreated = (number) => {
   competitors = [];
@@ -60,8 +54,6 @@ const userInterface = () => {
   document.getElementById("competitors").innerHTML = "";
 
   for (let e = 0; e < competitors.length; e++) {
-   
-
     let playdiv = document.createElement("div");
     playdiv.id = "player_" + e;
     playdiv.className = "player";
@@ -124,7 +116,7 @@ const dealerhand = () => {
 };
 
 //// created card symbols and userInterface, will updated to a colored image through CSS
-const displayCard = (card, player) => {   
+const displayCard = (card, player) => {
   let hand = document.getElementById("hand_" + player);
   hand.appendChild(cardInterface(card));
 };
@@ -133,29 +125,23 @@ const cardInterface = (card) => {
   let intface = document.createElement("div");
   let symbol = "";
 
-
-  if (card.Suit == "H"){
+  if (card.Suit == "H") {
     symbol = "&#9829;";
-
-  }else if (card.Suit == "S"){
+  } else if (card.Suit == "S") {
     symbol = "&#9824;";
-
-  }else if (card.Suit == "D"){
+  } else if (card.Suit == "D") {
     symbol = "&#9830;";
-
-  } else{
-
+  } else {
     symbol = "&#9827;";
-
   }
- 
 
   intface.className = "card";
   intface.innerHTML = card.Rank + "<br/>" + symbol;
   return intface;
 };
 
-const getScores = (player) => {// returns the number of points at hand
+const getScores = (player) => {
+  // returns the number of points at hand
   let scorpts = 0;
   for (let j = 0; j < competitors[player].Hand.length; j++) {
     scorpts += competitors[player].Hand[j].Value;
@@ -170,7 +156,8 @@ const newScores = () => {
   }
 };
 
-const hit = () => {// removes card from deck to player and chesk for points over 21
+const hit = () => {
+  // removes card from deck to player and chesk for points over 21
   let card = boardDk.pop();
   competitors[currentCompetitor].Hand.push(card);
   displayCard(card, currentCompetitor);
@@ -179,7 +166,8 @@ const hit = () => {// removes card from deck to player and chesk for points over
   dealChk();
 };
 
-const stand = () => {// moves to the next player or alternates between players
+const stand = () => {
+  // moves to the next player or alternates between players
   if (currentCompetitor != competitors.length - 1) {
     document
       .getElementById("player_" + currentCompetitor)
@@ -208,7 +196,9 @@ const gameOver = () => {
   document.getElementById("stateOfGame").style.display = "inline-block";
 };
 
-const dealChk = () => { // displays and check player who lost the game, and scored more than the needed points.
+
+const dealChk = () => {
+  // displays and check player who lost the game, and scored more than the needed points.
   if (competitors[currentCompetitor].Scored > 21) {
     document.getElementById("stateOfGame").innerHTML =
       "Player " + competitors[currentCompetitor].ID + ":  Lost";
@@ -217,12 +207,28 @@ const dealChk = () => { // displays and check player who lost the game, and scor
   }
 };
 
+const drawGame = () => {
+  let draw = "";
+  let ptsSore = 0;
+  for (let dr = 0; dr < competitors.length; dr++) {
+    if (
+      competitors[dr].Scored === ptsSore &&
+      competitors[dr].Scored === ptsSore
+    ) {
+      draw = dr;
+      ptsSore = competitors[dr].Scored;
+    }
+    
+  document.getElementById("stateOfGame").innerHTML =
+      "Player  " + competitors[draw].ID + ": Draw !!";
+  }
+  document.getElementById("stateOfGame").style.display = "inline-block";
+};
+
 const newDeck = () => {
   document.getElementById("total-number-cards").innerHTML = boardDk.length;
 };
-window.addEventListener(DOMContentLoaded, () =>{
+
 boardDkCreation();
 cardShuffle();
 playersCreated();
-
-});

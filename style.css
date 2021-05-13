@@ -4,6 +4,10 @@
 body {
   font-family: "Codystar", cursive;
   font-family: "Lemon", cursive;
+  /* background-image: url('https://static3.depositphotos.com/1000855/119/i/950/depositphotos_1193969-stock-photo-background-from-playing-cards.jpg');
+ */
+
+  
 }
 
 .pressbutton {
@@ -62,6 +66,7 @@ h2 {
   background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(12, 12, 12, 0.639));
   text-decoration: aquamarine;
   background-color: aqua;
+  position:relative;
 }
  
 
@@ -155,11 +160,10 @@ div#player_0::after {
 
   text-align: center;
   min-height: 630px;
-  position: relative;
+  position: relative; 
 
-  background-image: linear-gradient(
-    to bottom,
-    rgba(240, 241, 242, 0.899),
-    rgba(1, 55, 0.88)
-  );
-}
+  background-image: url('https://static3.depositphotos.com/1000855/119/i/950/depositphotos_1193969-stock-photo-background-from-playing-cards.jpg');
+
+}   
+  
+
