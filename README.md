@@ -14,3 +14,7 @@ d.value of a card is its face value for the numbered cards, 10 for a jack, queen
 e. The the purpose of the game is to have a hand with a value close to 21 without going over and also have a value greater than the other player.
 
 f.an ace and face card count as 21, a winning hand and its a winning hand
+
+g.Player1 will request another card if the value of the hand is under 17.
+
+h. There are no ties in the game design on purpose, some casinos play by such rules.
