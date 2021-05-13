@@ -82,3 +82,10 @@ h2 {
   color: rgb(10, 1, 16);
 }
 
+.competitors {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
