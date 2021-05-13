@@ -1,7 +1,7 @@
 # Project_1_Blackjack
-A Blackjack Game
+// A Blackjack Game
 
-This is a blackjack game with the following rules:
+// This is a blackjack game with the following rules:
 
 a.The player plays against the dealer (also known as the house) in my case the dealer is the player 1.
 
