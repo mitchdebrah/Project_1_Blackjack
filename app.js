@@ -1,247 +1,228 @@
-const cardSuits = ["D", "C", "S", "H"];
-const ranks = [
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K",
-  "A",
-];
-let boardDk = [];
-competitors = [];
-currentCompetitor = 0;
 
+
+
+let boardDk = [];
+let competitors = [];
+let currentCompetitor = 0;
 
 const boardDkCreation = () => {
   boardDk = [];
 
-  for (let boardDkcard of ranks) {
-    // console.log(boardDkcard)
-    for (let suits of cardSuits) {
-      //  console.log(suits)
-    //   console.log(ranks[suits] + cardSuits[boardDkcard]);
-      let values = parseInt(ranks[boardDkcard]);
-      if (
-        ranks[boardDkcard] == "J" ||
-        ranks[boardDkcard] == "Q" ||
-        ranks[boardDkcard] == "K"
-      )
-        values = 10;
-      if (ranks[boardDkcard] == "A") values = 11;
+
+  const cardSuits = ['S', 'H', 'D', 'C'];
+const ranks = [
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  'J',
+  'Q',
+  'K',
+  'A',
+];
+
+  for (let i = 0; i < ranks.length; i++) {
+    for (let x = 0; x < cardSuits.length; x++) {
+      let values = parseInt(ranks[i]);
+      if (ranks[i] == "J" || ranks[i] == "Q" || ranks[i] == "K") values = 10;
+      if (ranks[i] == "A") values = 11;
       let card = {
-        Rank: ranks[boardDkcard],
-        Suit: cardSuits[suits],
+        Rank: ranks[i],
+        Suit: cardSuits[x],
         Value: values,
       };
       boardDk.push(card);
     }
   }
 };
-// boardDkCreation();
 
 
 const playersCreated = (number) => {
   competitors = [];
-  for (let num of number) {
-    let playHand = [];
-    let player = { Name: "Player " + num, ID: num, Scored: 0, Hand: playHand };
-    cardplayers.push(player);
+  for (let i = 1; i <= number; i++) {
+    let hand = [];
+    let player = {
+      Name: "Player " + i,
+      ID: i,
+      Scored: 0,
+      Hand: hand,
+    };
+    competitors.push(player);
   }
 };
 
-const userInterface = () =>{
-    document.querySelector('competitors').innerHTML = '';
+const userInterface = () => {
+  document.getElementById("competitors").innerHTML = "";
 
-    for(let ply of competitors){
+  for (let e = 0; e < competitors.length; e++) {
+   
 
-        let divP = document.createElement('div');
-        document.querySelector('players').appendChild(divP); 
-        divP.className = 'player';
-        divP.id = 'player_' + ply;
-        divP.appendChild(divPI);
-        divP.appendChild(divH);
-        divP.appendChild(divPts);
-        
+    let playdiv = document.createElement("div");
+    playdiv.id = "player_" + e;
+    playdiv.className = "player";
 
-        let divPI = document.createElement('div');
-        divPI.innerHTML = 'Player ' + players[ply].ID;
+    let playdivid = document.createElement("div");
+    playdivid.innerHTML = "Player" + competitors[e].ID;
 
-        let divH = document.createElement('div');
-        divH.id = 'hand_' + ply;
+    let handiv = document.createElement("div");
+    handiv.id = "hand_" + e;
 
-        let divPts = document.createElement('div');
-        divPts.className = 'scorepts';
-        divPts.id = 'scorepts_' + ply;
+    let pointdiv = document.createElement("div");
+    pointdiv.className = "scorepts";
+    pointdiv.id = "scorepts_" + e;
 
-        console.log(divP)
-    }
+    playdiv.appendChild(playdivid);
+    playdiv.appendChild(handiv);
+    playdiv.appendChild(pointdiv);
 
-}
-// got inspiration from a popular card shuffle code
-const cardShuffle = () =>{
-    for (let i = 0; i < 200; i++){
-            
-        let placement0 = Math.floor((Math.random() * boardDk.length));
-        let placement1 = Math.floor((Math.random() * boardDk.length));
-        let spot = boardDk[placement0];
-
-        boardDk[placement0] = boardDk[placement1];
-        boardDk[placement1] = spot;
-    }
-}
-
-const beginBJGame = ()=>{
-    document.querySelector('reset').value = 'Reset';
-    document.querySelector("status").style.display="none";
-    boardDkCreation();
-    playersCreated(2);
-    cardShuffle();
-    userInterface();
-    document.querySelector('player_' + currentCompetitor).classList.add('active');
-    dealerhand();
-
-    currentCompetitor = 0;
-
-
-}
-
-const dealerhand = ()=>{ // distributes the cards to the players each player gets two cards.
-    for(let j = 0; j < 2; j++){
-        for(let comp of competitors){
-            let card = boardDk.pop();
-            competitors[comp].Hand.push(card);
-            displayCard(card, comp);
-            newScores();
-
-        }
-    }
-
-    newDeck();
-
-
-}
-
-
-const displayCard = (card, player)=>{
-    let hd = document.getElementById('hand_' + player);
-    hd.appendChild(cardInterface(card));
-
-}
-
-const cardInterface = (card) =>{
-    let intface = document.createElement('div');
-    let symbol = '';
-    if (card.Suit == 'H')
-    symbol = '&hearts;'
-    else if (card.Suit == 'S')
-    symbol = '&spades;'
-    else if(card.Suit == 'D')
-    symbol = '&diamonds'
-    else 
-    symbol ='&clubs;'
-
-
-    intface .className = 'card';
-    intface .innerHTML = card.Rank + '<br/>' + symbol;
-    return intface;
-
-    
-
-
-    
-    
-    
-    
-    
-
-    
-}
-
-const getScores = (player) =>{ // returns the number of points at hand
-    let scores = 0;
-    for(let pts of competitors[player].Hand.length){
-      scores += competitors[player].Hand[pts].Value
-
-    }
-    competitors[player].Scored = scores;
-    return scores;
-
-
-    
-}
-const newScores = () =>{
-  for(let newsc of competitors.length){
-    getScores();
-    document.getElementById('scorepts_' + newsc).innerHTML = competitors[newsc].Scored
+    document.getElementById("competitors").appendChild(playdiv);
   }
-}
+};
+// got inspiration from a popular card shuffle code
+const cardShuffle = () => {
+  for (let i = 0; i < 200; i++) {
+    let placement0 = Math.floor(Math.random() * boardDk.length);
+    let placement1 = Math.floor(Math.random() * boardDk.length);
+    let spot = boardDk[placement0];
 
-const hit = ()=>{  // removes card from deck to player and chesk for points over 21
-  let cardplayed = boardDk.pop();
-  competitors[currentCompetitor].Hand.push(cardplayed)
-  displayCard(card, currentCompetitor)
+    boardDk[placement0] = boardDk[placement1];
+    boardDk[placement1] = spot;
+  }
+};
+
+const beginBJGame = () => {
+  document.getElementById("reset").value = "DEAL";
+  currentCompetitor = 0;
+  boardDkCreation();
+  cardShuffle();
+  playersCreated(2);
+
+  userInterface();
+  document
+    .getElementById("player_" + currentCompetitor)
+    .classList.add("current");
+  dealerhand();
+};
+
+const dealerhand = () => {
+  // distributes the cards to the players each player gets two cards.
+  for (let j = 0; j < 2; j++) {
+    for (let q = 0; q < competitors.length; q++) {
+      let card = boardDk.pop();
+      competitors[q].Hand.push(card);
+      displayCard(card, q);
+      newScores();
+    }
+  }
+
+  newDeck();
+};
+
+//// created card symbols and userInterface, will updated to a colored image through CSS
+const displayCard = (card, player) => {   
+  let hand = document.getElementById("hand_" + player);
+  hand.appendChild(cardInterface(card));
+};
+
+const cardInterface = (card) => {
+  let intface = document.createElement("div");
+  let symbol = "";
+
+
+  if (card.Suit == "H"){
+    symbol = "&#9829;";
+
+  }else if (card.Suit == "S"){
+    symbol = "&#9824;";
+
+  }else if (card.Suit == "D"){
+    symbol = "&#9830;";
+
+  } else{
+
+    symbol = "&#9827;";
+
+  }
+ 
+
+  intface.className = "card";
+  intface.innerHTML = card.Rank + "<br/>" + symbol;
+  return intface;
+};
+
+const getScores = (player) => {// returns the number of points at hand
+  let scorpts = 0;
+  for (let j = 0; j < competitors[player].Hand.length; j++) {
+    scorpts += competitors[player].Hand[j].Value;
+  }
+  competitors[player].Scored = scorpts;
+  return scorpts;
+};
+const newScores = () => {
+  for (let i = 0; i < competitors.length; i++) {
+    getScores(i);
+    document.getElementById("scorepts_" + i).innerHTML = competitors[i].Scored;
+  }
+};
+
+const hit = () => {// removes card from deck to player and chesk for points over 21
+  let card = boardDk.pop();
+  competitors[currentCompetitor].Hand.push(card);
+  displayCard(card, currentCompetitor);
   newScores();
   newDeck();
   dealChk();
-}
+};
 
-const stand = () =>{ // alternates between players
-  if (currentCompetitor != competitors.length -1){
-    document.getElementById('player_' + currentCompetitor).classList.remove('active')
+const stand = () => {// moves to the next player or alternates between players
+  if (currentCompetitor != competitors.length - 1) {
+    document
+      .getElementById("player_" + currentCompetitor)
+      .classList.remove("current");
     currentCompetitor += 1;
-    document.getElementById('player_' + currentCompetitor).classList.add('active')
-  }
-  else {
+    document
+      .getElementById("player_" + currentCompetitor)
+      .classList.add("current");
+  } else {
     gameOver();
   }
+};
 
-}
-
-const gameOver = ()=>{
-  let victor = -1
-  let pointscored = 0
-  for( let vic of competitors.length){
-    if(competitors[vic].Scored > pointscored && competitors[vic] < 22){
-      victor = vic;
+// ends the game if one of the player's scores more  than 21 pts and the other has less  the total needed points to win.
+const gameOver = () => { 
+  let Winner_is = "";
+  let pointscored = 0;
+  for (let vic = 0; vic < competitors.length; vic++) {
+    if (competitors[vic].Scored > pointscored && competitors[vic].Scored < 22) {
+      Winner_is = vic;
     }
-    pointscored = competitors[vic].Scored
+    pointscored = competitors[vic].Scored;
   }
-  document.getElementById('status').innerHTML = 'Victor: Player ' + competitors[victor].ID
-  document.getElementById('status').style.display ='inline-block'
+  document.getElementById("stateOfGame").innerHTML =
+    "Player  " + competitors[Winner_is].ID + ": Won !!";
+  document.getElementById("stateOfGame").style.display = "inline-block";
+};
 
+const dealChk = () => { // displays and check player who lost the game, and scored more than the needed points.
+  if (competitors[currentCompetitor].Scored > 21) {
+    document.getElementById("stateOfGame").innerHTML =
+      "Player " + competitors[currentCompetitor].ID + ":  Lost";
 
-}
-
-const dealChk = () =>{
-  if(competitors[currentCompetitor].Scored > 21){
-    document.getElementById('status').innerHTML = 'Player: ' + competitors[currentCompetitor].ID + ' LOST';
-
-    document.getElementById('status').style.display = 'inline-block';
-    
+    document.getElementById("stateOfGame").style.display = "inline-block";
   }
+};
 
-}
+const newDeck = () => {
+  document.getElementById("total-number-cards").innerHTML = boardDk.length;
+};
+window.addEventListener(DOMContentLoaded, () =>{
+boardDkCreation();
+cardShuffle();
+playersCreated();
 
-    
-const newDeck = () =>{
-  document.getElementById('deckcount').innerHTML = boardDk.length
-    
-
-}
-
-window.addEventListener('DOMContentLoaded', () =>{
-  boardDkCreation();
-  cardShuffle();
-  playersCreated();
-
-
-
-})
-
+});

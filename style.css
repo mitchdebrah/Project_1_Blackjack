@@ -1,25 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Codystar&family=Lemon&display=swap");
 
-.btn{
-  border:none;
+
+body {
+  font-family: "Codystar", cursive;
+  font-family: "Lemon", cursive;
+}
+
+.pressbutton {
+  border: none;
   padding: 10px 30px;
-  border-radius:10px;
-  cursor:pointer;
-}
+  border-radius: 20px;
+  cursor: pointer;
 
 
-.jack {
-  width: 820px;
-  border: solid 1px rgb(245, 240, 240);
-  margin: 0 auto;
-  background: #3c81e8;
-  border: solid 1px;
-  text-align: center;
-  min-height: 630px;
+  background: rgb(68, 188, 201);
+  color: rgb(4, 0, 0);
+  border-radius: 0px;
+  border: solid 2px rgb(222, 141, 141);
+  font-family: "Lemon", cursive;
+  border-radius: 10px;
 }
 
- h3
-{
-padding: 10px;
-background:black;
-color:white;
+.pressbutton:hover {
+  background: #80c9b2;
 }
+
