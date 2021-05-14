@@ -1,6 +1,6 @@
-let boardDk = []; 
+let boardDk = []; // empty array for the 52 cards
 let competitors = []; // empty aray that takes 
-let currentCompetitor = 0; 
+let currentCompetitor = 0; // set at 0 for the 2 players
 
 const boardDkCreation = () => {
   boardDk = [];
@@ -96,7 +96,7 @@ const beginBJGame = () => {
   currentCompetitor = 0; // sets current player to a no point
   boardDkCreation();
   cardShuffle();
-  playersCreated(2);
+  playersCreated(2); // takes argument for  the  " number " parameter
 
   userInterface();
   document
