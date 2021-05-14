@@ -15,8 +15,6 @@ body {
   padding: 10px 30px;
   border-radius: 20px;
   cursor: pointer;
-
-
   background: rgb(68, 188, 201);
   color: rgb(4, 0, 0);
   border-radius: 0px;
@@ -147,16 +145,16 @@ div {
 }
 
 
-/* div#player_0 {
+ /* div#player_0 {
   display:none;
 }
 
 
 div#player_0::after {
   content: "Dealer";
-} */
+} 
 
-
+ */
 
 .green {
   width: 820px;
