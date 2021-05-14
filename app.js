@@ -162,8 +162,9 @@ const newScores = () => {
   }
 };
 
+// removes card from deck to player and chesk for points over 21
+//  pops card from  the displayCard function , sums the  card value from the dealchk function to the newDeck function, then to the total points using the newScore function 
 const hit = () => {
-  // removes card from deck to player and chesk for points over 21
   let card = boardDk.pop();
   competitors[currentCompetitor].Hand.push(card);
   displayCard(card, currentCompetitor);
@@ -173,7 +174,7 @@ const hit = () => {
 };
 
 const stand = () => {
-  // moves to the next player or alternates between players
+  // moves to the next player or alternates between players , checks  and update current player, if no player availabel it calls the gameOver function.
   if (currentCompetitor != competitors.length - 1) {
     document
       .getElementById("player_" + currentCompetitor)
