@@ -42,7 +42,7 @@ const playersCreated = (number) => {
     let hand = [];
     let player = {
       Name: "Player " + i,
-      ID: i,
+      Code: i,
       Scored: 0,
       Hand: hand,
     };
@@ -59,7 +59,7 @@ const userInterface = () => {
     playdiv.className = "player";
 
     let playdivid = document.createElement("div");
-    playdivid.innerHTML = "Player" + competitors[e].ID;
+    playdivid.innerHTML = "Player" + competitors[e].Code;
 
     let handiv = document.createElement("div");
     handiv.id = "hand_" + e;
@@ -75,7 +75,7 @@ const userInterface = () => {
     document.getElementById("competitors").appendChild(playdiv);
   }
 };
-// got inspiration from a popular card shuffle code
+// got inspiration from a popular card shuffle ID
 const cardShuffle = () => {
   for (let i = 0; i < 200; i++) {
     let placement0 = Math.floor(Math.random() * boardDk.length);
@@ -192,7 +192,7 @@ const gameOver = () => {
     pointscored = competitors[vic].Scored;
   }
   document.getElementById("stateOfGame").innerHTML =
-    "Player  " + competitors[Winner_is].ID + ": Won !!";
+    "Player  " + competitors[Winner_is].Code + ": Won !!";
   document.getElementById("stateOfGame").style.display = "inline-block";
 };
 
@@ -201,7 +201,7 @@ const dealChk = () => {
   // displays and check player who lost the game, and scored more than the needed points.
   if (competitors[currentCompetitor].Scored > 21) {
     document.getElementById("stateOfGame").innerHTML =
-      "Player " + competitors[currentCompetitor].ID + ":  Lost";
+      "Player " + competitors[currentCompetitor].Code + ":  Lost";
 
     document.getElementById("stateOfGame").style.display = "inline-block";
   }
@@ -220,7 +220,7 @@ const drawGame = () => {
     }
     
   document.getElementById("stateOfGame").innerHTML =
-      "Player  " + competitors[draw].ID + ": Draw !!";
+      "Player  " + competitors[draw].Code + ": Draw !!";
   }
   document.getElementById("stateOfGame").style.display = "inline-block";
 };
@@ -229,6 +229,11 @@ const newDeck = () => {
   document.getElementById("total-number-cards").innerHTML = boardDk.length;
 };
 
+window.addEventListener('DOMContentLoaded', () =>{
 boardDkCreation();
 cardShuffle();
 playersCreated();
+drawGame();
+
+})
+

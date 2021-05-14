@@ -23,10 +23,12 @@ body {
   border: solid 2px rgb(222, 141, 141);
   font-family: "Lemon", cursive;
   border-radius: 10px;
+  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(19, 34, 52, 0.79));
 }
 
 .pressbutton:hover {
-  background: #80c9b2;
+  background: #20916d;
+  
 }
 
 h2 {
@@ -63,7 +65,7 @@ h2 {
   margin: 3px;
   border: solid 3px;
   color: rgb(5, 1, 11);
-  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(12, 12, 12, 0.639));
+  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(22, 111, 220, 0.79));
   text-decoration: aquamarine;
   background-color: aqua;
   position:relative;
@@ -83,6 +85,7 @@ h2 {
   right: 235px;
   position: absolute;
   top: 57px;
+  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(24, 35, 48, 0.79));
 
   color: rgb(10, 1, 16);
 }
@@ -102,7 +105,9 @@ h2 {
   display: inline-block;
   margin: 2%;
   vertical-align: top;
-  background: #b2e3ee;
+  background: #49a0b3;
+  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(2, 8, 14, 0.79));
+ 
 }
 
 .player.current {
@@ -119,7 +124,7 @@ h2 {
 
 .boardDk {
   float: left;
-  background: #b2e3ee;
+  background:rgb(68, 188, 201);
   color: rgb(216, 94, 94);
   padding: 7px;
   border-radius: 10px;
@@ -130,6 +135,7 @@ h2 {
   margin: 0 auto;
   width: 40px;
   margin: 20px;
+  background-image:linear-gradient(to bottom, rgba(225, 201, 201, 0), rgba(21, 29, 38, 0.79));
 }
 
 #total-number-cards {
@@ -162,7 +168,11 @@ div#player_0::after {
   min-height: 630px;
   position: relative; 
 
-  background-image: url('https://static3.depositphotos.com/1000855/119/i/950/depositphotos_1193969-stock-photo-background-from-playing-cards.jpg');
+  background-image: url('https://fuzzco.com/wp-content/uploads/2015/02/deck.jpg');
+
+  height: 100;
+  width: 100;
+ 
 
 }   
   
