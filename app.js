@@ -1,6 +1,6 @@
-let boardDk = [];
-let competitors = [];
-let currentCompetitor = 0;
+let boardDk = []; 
+let competitors = []; // empty aray that takes 
+let currentCompetitor = 0; 
 
 const boardDkCreation = () => {
   boardDk = [];
@@ -37,7 +37,7 @@ const boardDkCreation = () => {
   }
 };
 
-// creates players takes a parameter
+// players takes a parameter
 const playersCreated = (number) => {
   competitors = [];
   for (let i = 1; i <= number; i++) {
@@ -48,21 +48,22 @@ const playersCreated = (number) => {
       Scored: 0,
       Hand: hand,
     };
-    competitors.push(player); // pushes object properties of variable player into an array
+    competitors.push(player); // pushes object properties of variable player into an array of competitors
   }
 };
 
+//  creates divs and  appends them to players points and hand 
 const userInterface = () => {
   document.getElementById("competitors").innerHTML = ""; 
 
   for (let e = 0; e < competitors.length; e++) {
     let playdiv = document.createElement("div");
     
-    playdiv.id = "player_" + e;  // id attributes gives a unique identity to the player element 
-    playdiv.className = "player"; // 
+    playdiv.id = "player_" + e;  // id attributes gives a unique identity to the player  + an index element from the compettitors  array.  add num 0 
+    playdiv.className = "player"; //  gets and sets a class arttribute of player
    
     let playdivid = document.createElement("div");
-    playdivid.innerHTML = "Player" + competitors[e].Code;
+    playdivid.innerHTML = "Player" + competitors[e].Code; // Player gets number 1 (player number 1)
     playdiv.appendChild(playdivid);
 
     let handiv = document.createElement("div");
@@ -71,15 +72,15 @@ const userInterface = () => {
 
     let pointdiv = document.createElement("div");
     pointdiv.className = "scorepts";
-    pointdiv.id = "scorepts_" + e;
+    pointdiv.id = "scorepts_" + e; // gets points 
 
     playdiv.appendChild(pointdiv);
     document.getElementById("competitors").appendChild(playdiv);
   }
 };
-//  shuffles card
+//  shuffles a 100 card  
 const cardShuffle = () => {
-  for (let j = 0; j < 200; j++) {
+  for (let j = 0; j < 100; j++) {
     let topShuff = Math.floor(Math.random() * boardDk.length);
     let downShuff = Math.floor(Math.random() * boardDk.length);
     let spot = boardDk[topShuff];
@@ -89,32 +90,32 @@ const cardShuffle = () => {
   }
 };
 
+// the game satrts here , has a restart and a deal button 
 const beginBJGame = () => {
   document.getElementById("reset").value = "DEAL";
-  currentCompetitor = 0;
+  currentCompetitor = 0; // sets current player to a no point
   boardDkCreation();
   cardShuffle();
   playersCreated(2);
 
   userInterface();
   document
-    .getElementById("player_" + currentCompetitor) 
-    .classList.add("current");
+    .getElementById("player_" + currentCompetitor)  // the currentplayer 1 0r 2
   dealerhand();
 };
 
 const dealerhand = () => {
-  // distributes the cards to the players each player gets two cards.
+  // distributes the cards to the players each player gets two cards.  after shuffling
   for (let j = 0; j < 2; j++) {
     for (let q = 0; q < competitors.length; q++) {
-      let card = boardDk.pop();
-      competitors[q].Hand.push(card);
-      displayCard(card, q);
-      newScores();
+      let card = boardDk.pop(); // removes the last element from the boardDk array 
+      competitors[q].Hand.push(card); // property key in player object accesses the competitor array and pushes value to card
+      displayCard(card, q);// the function is accessed 
+      newScores(); // new points from the game are displayed.
     }
   }
 
-  newDeck();
+  newDeck();  // calls newDeck function
 };
 
 //// created card symbols and userInterface, will updated to a colored image through CSS
@@ -123,18 +124,21 @@ const displayCard = (card, player) => {
   hand.appendChild(cardInterface(card));
 };
 
+
+// creates card GUI 
 const cardInterface = (card) => {
   let intface = document.createElement("div");
   let symbol = "";
 
-  if (card.Suit == "H") {
-    symbol = "&#9829;";
+  // a conditional statement to assign suits decimal code to a symbol variable
+  if (card.Suit == "H") {  
+    symbol = "&#9829;"; // Hearts
   } else if (card.Suit == "S") {
-    symbol = "&#9824;";
+    symbol = "&#9824;"; // spade
   } else if (card.Suit == "D") {
-    symbol = "&#9830;";
+    symbol = "&#9830;";// diamonds
   } else {
-    symbol = "&#9827;";
+    symbol = "&#9827;";  // clubs
   }
 
   intface.className = "card";
@@ -205,15 +209,16 @@ const dealChk = () => {
     document.getElementById("stateOfGame").innerHTML =
       "Player " + competitors[currentCompetitor].Code + ":  Lost";
 
-    document.getElementById("stateOfGame").style.display = "inline-block";
+    document.getElementById("stateOfGame").style.display = "inline-block"; //allows to set a width and height on the element.
   }
 };
 
-
+// refreshes and sets new deck for the game -- sets 52 cards
 const newDeck = () => {
   document.getElementById("total-number-cards").innerHTML = boardDk.length;
 };
 
+//fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
 window.addEventListener('DOMContentLoaded', () =>{
 boardDkCreation();
 cardShuffle();
