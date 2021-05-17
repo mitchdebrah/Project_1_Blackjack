@@ -24,3 +24,5 @@ h. There are no ties in the game design on purpose, some casinos play by such ru
 // add images to give the card a real look  of deck of cards.
 
 // make the the flip instead of popping out.
+
+link to the project: https://github.com/mitchdebrah/Project_1_Blackjack

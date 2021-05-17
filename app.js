@@ -1,5 +1,5 @@
 let boardDk = []; // empty array for the 52 cards
-let competitors = []; // empty aray that takes 
+let competitors = []; // empty aray for competitors
 let currentCompetitor = 0; // set at 0 for the 2 players
 
 const boardDkCreation = () => {
@@ -37,7 +37,7 @@ const boardDkCreation = () => {
   }
 };
 
-// players takes a parameter
+//  creates players, and pushes  players properties into player array.
 const playersCreated = (number) => {
   competitors = [];
   for (let i = 1; i <= number; i++) {
