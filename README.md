@@ -25,4 +25,4 @@ h. There are no ties in the game design on purpose, some casinos play by such ru
 
 // make the the flip instead of popping out.
 
-link to the project: https://github.com/mitchdebrah/Project_1_Blackjack
+link to the project: http://mitchdebrah.github.io/
